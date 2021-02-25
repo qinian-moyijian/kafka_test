@@ -21,7 +21,7 @@ public class ConfigUtils {
 
     private static final Properties pop;
 
-    private static  Properties producerProperties;
+    private static Properties producerProperties;
 
     private static Properties consumerProperties;
 
@@ -179,67 +179,118 @@ public class ConfigUtils {
     /**
      * poll时从kafka最大拉取的数据大小(默认50M),如果单一条消息大于这个值,每次只能接受一条消息
      */
-    public static final Integer CONSUMER_FETCH_MAX_BYTES =  getIntegerConfiguration("consumer.fetch.max.bytes");
+    public static final Integer CONSUMER_FETCH_MAX_BYTES = getIntegerConfiguration("consumer.fetch.max.bytes");
     /**
      * 没有满足最小消息时,等待返回时间(默认500ms)
      */
-    public static final Integer CONSUMER_FETCH_MAX_WAIT_MS =  getIntegerConfiguration("consumer.fetch.max.wait.ms");
+    public static final Integer CONSUMER_FETCH_MAX_WAIT_MS = getIntegerConfiguration("consumer.fetch.max.wait.ms");
     /**
-     *一次最多从一个分区拉取多少数据(默认1M)
+     * 一次最多从一个分区拉取多少数据(默认1M)
      */
-    public static final Integer CONSUMER_MAX_PARTITION_FETCH_BYTES =  getIntegerConfiguration("consumer.max.partition.fetch.bytes");
+    public static final Integer CONSUMER_MAX_PARTITION_FETCH_BYTES = getIntegerConfiguration("consumer.max.partition.fetch.bytes");
     /**
-     *最大一次poll的数据条数(默认500条)
+     * 最大一次poll的数据条数(默认500条)
      */
-    public static final Integer CONSUMER_MAX_POLL_RECORDS =  getIntegerConfiguration("consumer.max.poll.records");
+    public static final Integer CONSUMER_MAX_POLL_RECORDS = getIntegerConfiguration("consumer.max.poll.records");
     /**
-     *多久关闭空置连接(默认9分钟)
+     * 多久关闭空置连接(默认9分钟)
      */
-    public static final Integer CONSUMER_CONNECTIONS_MAX_IDLE_MS =  getIntegerConfiguration("consumer.connections.max.idle.ms");
+    public static final Integer CONSUMER_CONNECTIONS_MAX_IDLE_MS = getIntegerConfiguration("consumer.connections.max.idle.ms");
     /**
-     *通过正则订阅不到内部的topic,只能subscribe(内部主题名)来订阅(默认true)
+     * 通过正则订阅不到内部的topic,只能subscribe(内部主题名)来订阅(默认true)
      */
-    public static final Boolean CONSUMER_EXCLUDE_INTERNAL_TOPICS =  getBooleanConfiguration("consumer.exclude.internal.topics");
+    public static final Boolean CONSUMER_EXCLUDE_INTERNAL_TOPICS = getBooleanConfiguration("consumer.exclude.internal.topics");
     /**
-     *socket接收消息缓冲区大小(默认64k)
+     * socket接收消息缓冲区大小(默认64k)
      */
-    public static final Integer CONSUMER_RECEIVE_BUFFER_BYTES =  getIntegerConfiguration("consumer.receive.buffer.bytes");
+    public static final Integer CONSUMER_RECEIVE_BUFFER_BYTES = getIntegerConfiguration("consumer.receive.buffer.bytes");
     /**
-     *socket发送消息缓冲区大小(默认128k)
+     * socket发送消息缓冲区大小(默认128k)
      */
-    public static final Integer CONSUMER_SEND_BUFFER_BYTES =  getIntegerConfiguration("consumer.send.buffer.bytes");
+    public static final Integer CONSUMER_SEND_BUFFER_BYTES = getIntegerConfiguration("consumer.send.buffer.bytes");
     /**
-     *consumer等待响应的最大等待时间(默认30秒)
+     * consumer等待响应的最大等待时间(默认30秒)
      */
-    public static final Integer CONSUMER_REQUEST_TIMEOUT_MS =  getIntegerConfiguration("consumer.request.timeout.ms");
+    public static final Integer CONSUMER_REQUEST_TIMEOUT_MS = getIntegerConfiguration("consumer.request.timeout.ms");
     /**
-     *没有broker变化和分区变化时刷新元数据的间隔时间
+     * 没有broker变化和分区变化时刷新元数据的间隔时间
      */
-    public static final Integer CONSUMER_METADATA_MAX_AGE_MS =  getIntegerConfiguration("consumer.metadata.max.age.ms");
+    public static final Integer CONSUMER_METADATA_MAX_AGE_MS = getIntegerConfiguration("consumer.metadata.max.age.ms");
     /**
-     *防止消费者一直向broker发送请求的间隔默认(50毫秒)
+     * 防止消费者一直向broker发送请求的间隔默认(50毫秒)
      */
-    public static final Integer CONSUMER_RECONNECT_BACKOFF_MS =  getIntegerConfiguration("consumer.reconnect.backoff.ms");
+    public static final Integer CONSUMER_RECONNECT_BACKOFF_MS = getIntegerConfiguration("consumer.reconnect.backoff.ms");
     /**
-     *配置重新发送失败请求到指定主题之间的间隔(默认100ms)
+     * 配置重新发送失败请求到指定主题之间的间隔(默认100ms)
      */
-    public static final Integer CONSUMER_RETRY_BACKOFF_MS =  getIntegerConfiguration("consumer.retry.backoff.ms");
+    public static final Integer CONSUMER_RETRY_BACKOFF_MS = getIntegerConfiguration("consumer.retry.backoff.ms");
     /**
-     *事务隔离级别,read_committed,可以消费LSO的数据(默认read_uncommitted即可以消费HW数据)
+     * 事务隔离级别,read_committed,可以消费LSO的数据(默认read_uncommitted即可以消费HW数据)
      */
-    public static final String CONSUMER_ISOLATION_LEVEL =  getStringConfiguration("consumer.isolation.level");
+    public static final String CONSUMER_ISOLATION_LEVEL = getStringConfiguration("consumer.isolation.level");
     /**
-     *分组管理到消费者协调器的预计时间,必须小于consumer.hearbeat.interval.ms的三分之一
+     * 分组管理到消费者协调器的预计时间,必须小于consumer.hearbeat.interval.ms的三分之一
      */
-    public static final Integer CONSUMER_HEARTBEAT_INTERVAL_MS =  getIntegerConfiguration("consumer.heartbeat.interval.ms");
+    public static final Integer CONSUMER_HEARTBEAT_INTERVAL_MS = getIntegerConfiguration("consumer.heartbeat.interval.ms");
     /**
-     *组管理协议检测消费者失效时间默认(10秒)
+     * 组管理协议检测消费者失效时间默认(10秒)
      */
-    public static final Integer CONSUMER_SESSION_TIMEOUT_MS =  getIntegerConfiguration("consumer.session.timeout.ms");
+    public static final Integer CONSUMER_SESSION_TIMEOUT_MS = getIntegerConfiguration("consumer.session.timeout.ms");
     /**
-     *如果超过30秒没有poll,则认为consumer离开,触发再均衡(默认30秒)
+     * 如果超过30秒没有poll,则认为consumer离开,触发再均衡(默认30秒)
      */
-    public static final Integer CONSUMER_MAX_POLL_INTERVAL_MS =  getIntegerConfiguration("consumer.max.poll.interval.ms");
+    public static final Integer CONSUMER_MAX_POLL_INTERVAL_MS = getIntegerConfiguration("consumer.max.poll.interval.ms");
+
+    ////////////////////////////////////////////////  主题  ///////////////////////////////////////////////////
+    /**
+     * 主题一条消息的最大大小默认(1000012).message.max.bytes=1000012 服务端最大接受的消息指批次
+     */
+    public static final Integer TOPIC_MAX_POLL_INTERVAL_MS = getIntegerConfiguration("topic.max.message.bytes");
+    /**
+     * 过期日志的删除策略,compact(默认delete)
+     */
+    public static final String TOPIC_CLEANUP_POLICY = getStringConfiguration("topic.cleanup.policy");
+    /**
+     * 消息压缩格式,uncompressed,snappy,lz4,gzip默认(producer保留消费者提供的)
+     */
+    public static final String TOPIC_COMPRESSION_TYPE = getStringConfiguration("topic.compression.type");
+    /**
+     * 被标识删除的数据能保留多久默认(1天)
+     */
+    public static final Integer TOPIC_DELETE_RETENTION_MS = getIntegerConfiguration("topic.delete.retention.ms");
+    /**
+     * 消息的时间戳类型CreateTime(默认),LogAppendTime
+     */
+    public static final String TOPIC_MESSAGE_TIMESTAMP_TYPE = getStringConfiguration("topic.message.timestamp.type");
+    /**
+     * 创建日志分段时是否预分配空间(默认false)
+     */
+    public static final Boolean TOPIC_PREALLOCATE = getBooleanConfiguration("topic.preallocate");
+    /**
+     * 分区isr至少有多少个副本(默认1)
+     */
+    public static final Integer TOPIC_MIN_INSYNC_REPLICAS = getIntegerConfiguration("topic.min.insync.replicas");
+    /**
+     * 日志清理时最小浑浊率(默认0.5)
+     */
+    public static final Double TOPIC_MIN_CLEANABLE_DIRTY_RATIO = getDoubleConfiguration("topic.min.cleanable.dirty.ratio");
+    /**
+     * delete删除策略日志消息保留时间(默认7天)
+     */
+    public static final Integer TOPIC_RETETION_MS = getIntegerConfiguration("topic.retention.ms");
+    /**
+     * segment大小(默认1g)
+     */
+    public static final Integer TOPIC_SEGMENT_BYTEST = getIntegerConfiguration("topic.segment.bytes");
+    /**
+     * segment最长多久要滚动一次(默认7天)
+     */
+    public static final Integer TOPIC_SEGMENT_MS = getIntegerConfiguration("topic.segment.ms");
+    /**
+     * 是否开启不完全选举(默认false)
+     */
+    public static final Boolean TOPIC_UNCLEAN_LEADER_ELECTION_ENABLE = getBooleanConfiguration("topic.unclean.leader.election.enable");
+
 
     /**
      * 获取字符串类型的参数值
@@ -326,29 +377,50 @@ public class ConfigUtils {
     public static Properties getProducerProperties() {
         if (producerProperties == null) {
             producerProperties = new Properties();
-            if (BOOTSTRAP_SERVERS!=null) producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
-            if (PRODUCER_RETIRES!=null) producerProperties.put(ProducerConfig.RETRIES_CONFIG, PRODUCER_RETIRES);
-            if (PRODUCER_PARTITIONER!=null) producerProperties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, PRODUCER_PARTITIONER);
-            if (PRODUCER_INTERCEPTOR!=null) producerProperties.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, PRODUCER_INTERCEPTOR);
-            if (PRODUCER_KEY_SERIALIZER!=null) producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, PRODUCER_KEY_SERIALIZER);
-            if (PRODUCER_VALUE_SERIALIZER!=null) producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, PRODUCER_VALUE_SERIALIZER);
-            if (PRODUCER_ACKS!=null) producerProperties.put(ProducerConfig.ACKS_CONFIG, PRODUCER_ACKS);
-            if (PRODUCER_CLIENT_ID!=null) producerProperties.put(ProducerConfig.CLIENT_ID_CONFIG, PRODUCER_CLIENT_ID);
-            if (PRODUCER_RETIRES!=null) producerProperties.put(ProducerConfig.RETRIES_CONFIG, PRODUCER_RETIRES);
-            if (PRODUCER_RETIRY_BACKOFF_MS!=null) producerProperties.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, PRODUCER_RETIRY_BACKOFF_MS);
-            if (PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTIONS!=null) producerProperties.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTIONS);
-            if (PRODUCER_BUFFER_MEMORY!=null) producerProperties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, PRODUCER_BUFFER_MEMORY);
-            if (PRODUCER_BATCH_SIZE!=null) producerProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, PRODUCER_BATCH_SIZE);
-            if (PRODUCER_LINGER_MS!=null) producerProperties.put(ProducerConfig.LINGER_MS_CONFIG, PRODUCER_LINGER_MS);
-            if (PRODUCER_MAX_BLOCK_MS!=null) producerProperties.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, PRODUCER_MAX_BLOCK_MS);
-            if (PRODUCER_MAX_REQUEST_SIZE!=null) producerProperties.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, PRODUCER_MAX_REQUEST_SIZE);
-            if (PRODUCER_COMPRESSION_TYPE!=null) producerProperties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, PRODUCER_COMPRESSION_TYPE);
-            if (PRODUCER_CONNECTIONS_MAX_IDLE_MS!=null) producerProperties.put(ProducerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, PRODUCER_CONNECTIONS_MAX_IDLE_MS);
-            if (PRODUCER_RECEIVE_BUFFER_BYTEST!=null) producerProperties.put(ProducerConfig.RECEIVE_BUFFER_CONFIG, PRODUCER_RECEIVE_BUFFER_BYTEST);
-            if (PRODUCER_SEND_BUFFER_BYTEST!=null) producerProperties.put(ProducerConfig.SEND_BUFFER_CONFIG, PRODUCER_SEND_BUFFER_BYTEST);
-            if (PRODUCER_REQUEST_TIMEOUT_MS!=null) producerProperties.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, PRODUCER_REQUEST_TIMEOUT_MS);
-            if (PRODUCER_ENABLE_IDEMPOTENCE!=null) producerProperties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, PRODUCER_ENABLE_IDEMPOTENCE);
-            if (PRODUCER_METADATA_MAX_AGE_MS!=null) producerProperties.put(ProducerConfig.METADATA_MAX_AGE_CONFIG, PRODUCER_METADATA_MAX_AGE_MS);
+            if (BOOTSTRAP_SERVERS != null)
+                producerProperties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+            if (PRODUCER_RETIRES != null) producerProperties.put(ProducerConfig.RETRIES_CONFIG, PRODUCER_RETIRES);
+            if (PRODUCER_PARTITIONER != null)
+                producerProperties.put(ProducerConfig.PARTITIONER_CLASS_CONFIG, PRODUCER_PARTITIONER);
+            if (PRODUCER_INTERCEPTOR != null)
+                producerProperties.put(ProducerConfig.INTERCEPTOR_CLASSES_CONFIG, PRODUCER_INTERCEPTOR);
+            if (PRODUCER_KEY_SERIALIZER != null)
+                producerProperties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, PRODUCER_KEY_SERIALIZER);
+            if (PRODUCER_VALUE_SERIALIZER != null)
+                producerProperties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, PRODUCER_VALUE_SERIALIZER);
+            if (PRODUCER_ACKS != null)
+                producerProperties.put(ProducerConfig.ACKS_CONFIG, PRODUCER_ACKS);
+            if (PRODUCER_CLIENT_ID != null)
+                producerProperties.put(ProducerConfig.CLIENT_ID_CONFIG, PRODUCER_CLIENT_ID);
+            if (PRODUCER_RETIRES != null)
+                producerProperties.put(ProducerConfig.RETRIES_CONFIG, PRODUCER_RETIRES);
+            if (PRODUCER_RETIRY_BACKOFF_MS != null)
+                producerProperties.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, PRODUCER_RETIRY_BACKOFF_MS);
+            if (PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTIONS != null)
+                producerProperties.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, PRODUCER_MAX_IN_FLIGHT_REQUESTS_PER_CONNECTIONS);
+            if (PRODUCER_BUFFER_MEMORY != null)
+                producerProperties.put(ProducerConfig.BUFFER_MEMORY_CONFIG, PRODUCER_BUFFER_MEMORY);
+            if (PRODUCER_BATCH_SIZE != null)
+                producerProperties.put(ProducerConfig.BATCH_SIZE_CONFIG, PRODUCER_BATCH_SIZE);
+            if (PRODUCER_LINGER_MS != null) producerProperties.put(ProducerConfig.LINGER_MS_CONFIG, PRODUCER_LINGER_MS);
+            if (PRODUCER_MAX_BLOCK_MS != null)
+                producerProperties.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, PRODUCER_MAX_BLOCK_MS);
+            if (PRODUCER_MAX_REQUEST_SIZE != null)
+                producerProperties.put(ProducerConfig.MAX_REQUEST_SIZE_CONFIG, PRODUCER_MAX_REQUEST_SIZE);
+            if (PRODUCER_COMPRESSION_TYPE != null)
+                producerProperties.put(ProducerConfig.COMPRESSION_TYPE_CONFIG, PRODUCER_COMPRESSION_TYPE);
+            if (PRODUCER_CONNECTIONS_MAX_IDLE_MS != null)
+                producerProperties.put(ProducerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, PRODUCER_CONNECTIONS_MAX_IDLE_MS);
+            if (PRODUCER_RECEIVE_BUFFER_BYTEST != null)
+                producerProperties.put(ProducerConfig.RECEIVE_BUFFER_CONFIG, PRODUCER_RECEIVE_BUFFER_BYTEST);
+            if (PRODUCER_SEND_BUFFER_BYTEST != null)
+                producerProperties.put(ProducerConfig.SEND_BUFFER_CONFIG, PRODUCER_SEND_BUFFER_BYTEST);
+            if (PRODUCER_REQUEST_TIMEOUT_MS != null)
+                producerProperties.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, PRODUCER_REQUEST_TIMEOUT_MS);
+            if (PRODUCER_ENABLE_IDEMPOTENCE != null)
+                producerProperties.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, PRODUCER_ENABLE_IDEMPOTENCE);
+            if (PRODUCER_METADATA_MAX_AGE_MS != null)
+                producerProperties.put(ProducerConfig.METADATA_MAX_AGE_CONFIG, PRODUCER_METADATA_MAX_AGE_MS);
         }
         return producerProperties;
     }
@@ -373,45 +445,73 @@ public class ConfigUtils {
     public static Properties getConsumerProperties() {
         if (consumerProperties == null) {
             consumerProperties = new Properties();
-            if (BOOTSTRAP_SERVERS!=null) consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
-            if (CONSUMER_GROUP_ID!=null) consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, CONSUMER_GROUP_ID);
-            if (CONSUMER_CLIENT_ID!=null) consumerProperties.put(ConsumerConfig.CLIENT_ID_CONFIG, CONSUMER_CLIENT_ID);
-            if (CONSUMER_ENABLE_AUTO_COMMIT!=null) consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, CONSUMER_ENABLE_AUTO_COMMIT);
-            if (CONSUMER_AUTO_COMMIT_INTERVAL_MS!=null) consumerProperties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, CONSUMER_AUTO_COMMIT_INTERVAL_MS);
-            if (CONSUMER_AUTO_OFFSET_RESET!=null) consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, CONSUMER_AUTO_OFFSET_RESET);
-            if (CONSUMER_INTERCEPTOR!=null) consumerProperties.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, CONSUMER_INTERCEPTOR);
-            if (CONSUMER_KEY_DESERIALIZER!=null) consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, CONSUMER_KEY_DESERIALIZER);
-            if (CONSUMER_VALUE_DESERIALIZER!=null) consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CONSUMER_VALUE_DESERIALIZER);
-            if (CONSUMER_PARTITION_ASSIGNMENT_STRATEGY!=null) consumerProperties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, CONSUMER_PARTITION_ASSIGNMENT_STRATEGY);
-            if (CONSUMER_FETCH_MIN_BYTES!=null) consumerProperties.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, CONSUMER_FETCH_MIN_BYTES);
-            if (CONSUMER_FETCH_MAX_BYTES!=null) consumerProperties.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, CONSUMER_FETCH_MAX_BYTES);
-            if (CONSUMER_FETCH_MAX_WAIT_MS!=null) consumerProperties.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, CONSUMER_FETCH_MAX_WAIT_MS);
-            if (CONSUMER_MAX_PARTITION_FETCH_BYTES!=null) consumerProperties.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, CONSUMER_MAX_PARTITION_FETCH_BYTES);
-            if (CONSUMER_MAX_POLL_RECORDS!=null) consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, CONSUMER_MAX_POLL_RECORDS);
-            if (CONSUMER_CONNECTIONS_MAX_IDLE_MS!=null) consumerProperties.put(ConsumerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, CONSUMER_CONNECTIONS_MAX_IDLE_MS);
-            if (CONSUMER_EXCLUDE_INTERNAL_TOPICS!=null) consumerProperties.put(ConsumerConfig.EXCLUDE_INTERNAL_TOPICS_CONFIG, CONSUMER_EXCLUDE_INTERNAL_TOPICS);
-            if (CONSUMER_RECEIVE_BUFFER_BYTES!=null) consumerProperties.put(ConsumerConfig.RECEIVE_BUFFER_CONFIG, CONSUMER_RECEIVE_BUFFER_BYTES);
-            if (CONSUMER_SEND_BUFFER_BYTES!=null) consumerProperties.put(ConsumerConfig.SEND_BUFFER_CONFIG, CONSUMER_SEND_BUFFER_BYTES);
-            if (CONSUMER_REQUEST_TIMEOUT_MS!=null) consumerProperties.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, CONSUMER_REQUEST_TIMEOUT_MS);
-            if (CONSUMER_METADATA_MAX_AGE_MS!=null) consumerProperties.put(ConsumerConfig.METADATA_MAX_AGE_CONFIG, CONSUMER_METADATA_MAX_AGE_MS);
-            if (CONSUMER_RECONNECT_BACKOFF_MS!=null) consumerProperties.put(ConsumerConfig.RECONNECT_BACKOFF_MS_CONFIG, CONSUMER_RECONNECT_BACKOFF_MS);
-            if (CONSUMER_RETRY_BACKOFF_MS!=null) consumerProperties.put(ConsumerConfig.RETRY_BACKOFF_MS_CONFIG, CONSUMER_RETRY_BACKOFF_MS);
-            if (CONSUMER_ISOLATION_LEVEL!=null) consumerProperties.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, CONSUMER_ISOLATION_LEVEL);
-            if (CONSUMER_HEARTBEAT_INTERVAL_MS!=null) consumerProperties.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, CONSUMER_HEARTBEAT_INTERVAL_MS);
-            if (CONSUMER_SESSION_TIMEOUT_MS!=null) consumerProperties.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, CONSUMER_SESSION_TIMEOUT_MS);
-            if (CONSUMER_MAX_POLL_INTERVAL_MS!=null) consumerProperties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, CONSUMER_MAX_POLL_INTERVAL_MS);
+            if (BOOTSTRAP_SERVERS != null)
+                consumerProperties.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+            if (CONSUMER_GROUP_ID != null)
+                consumerProperties.put(ConsumerConfig.GROUP_ID_CONFIG, CONSUMER_GROUP_ID);
+            if (CONSUMER_CLIENT_ID != null)
+                consumerProperties.put(ConsumerConfig.CLIENT_ID_CONFIG, CONSUMER_CLIENT_ID);
+            if (CONSUMER_ENABLE_AUTO_COMMIT != null)
+                consumerProperties.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, CONSUMER_ENABLE_AUTO_COMMIT);
+            if (CONSUMER_AUTO_COMMIT_INTERVAL_MS != null)
+                consumerProperties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, CONSUMER_AUTO_COMMIT_INTERVAL_MS);
+            if (CONSUMER_AUTO_OFFSET_RESET != null)
+                consumerProperties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, CONSUMER_AUTO_OFFSET_RESET);
+            if (CONSUMER_INTERCEPTOR != null)
+                consumerProperties.put(ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG, CONSUMER_INTERCEPTOR);
+            if (CONSUMER_KEY_DESERIALIZER != null)
+                consumerProperties.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, CONSUMER_KEY_DESERIALIZER);
+            if (CONSUMER_VALUE_DESERIALIZER != null)
+                consumerProperties.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, CONSUMER_VALUE_DESERIALIZER);
+            if (CONSUMER_PARTITION_ASSIGNMENT_STRATEGY != null)
+                consumerProperties.put(ConsumerConfig.PARTITION_ASSIGNMENT_STRATEGY_CONFIG, CONSUMER_PARTITION_ASSIGNMENT_STRATEGY);
+            if (CONSUMER_FETCH_MIN_BYTES != null)
+                consumerProperties.put(ConsumerConfig.FETCH_MIN_BYTES_CONFIG, CONSUMER_FETCH_MIN_BYTES);
+            if (CONSUMER_FETCH_MAX_BYTES != null)
+                consumerProperties.put(ConsumerConfig.FETCH_MAX_BYTES_CONFIG, CONSUMER_FETCH_MAX_BYTES);
+            if (CONSUMER_FETCH_MAX_WAIT_MS != null)
+                consumerProperties.put(ConsumerConfig.FETCH_MAX_WAIT_MS_CONFIG, CONSUMER_FETCH_MAX_WAIT_MS);
+            if (CONSUMER_MAX_PARTITION_FETCH_BYTES != null)
+                consumerProperties.put(ConsumerConfig.MAX_PARTITION_FETCH_BYTES_CONFIG, CONSUMER_MAX_PARTITION_FETCH_BYTES);
+            if (CONSUMER_MAX_POLL_RECORDS != null)
+                consumerProperties.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, CONSUMER_MAX_POLL_RECORDS);
+            if (CONSUMER_CONNECTIONS_MAX_IDLE_MS != null)
+                consumerProperties.put(ConsumerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, CONSUMER_CONNECTIONS_MAX_IDLE_MS);
+            if (CONSUMER_EXCLUDE_INTERNAL_TOPICS != null)
+                consumerProperties.put(ConsumerConfig.EXCLUDE_INTERNAL_TOPICS_CONFIG, CONSUMER_EXCLUDE_INTERNAL_TOPICS);
+            if (CONSUMER_RECEIVE_BUFFER_BYTES != null)
+                consumerProperties.put(ConsumerConfig.RECEIVE_BUFFER_CONFIG, CONSUMER_RECEIVE_BUFFER_BYTES);
+            if (CONSUMER_SEND_BUFFER_BYTES != null)
+                consumerProperties.put(ConsumerConfig.SEND_BUFFER_CONFIG, CONSUMER_SEND_BUFFER_BYTES);
+            if (CONSUMER_REQUEST_TIMEOUT_MS != null)
+                consumerProperties.put(ConsumerConfig.REQUEST_TIMEOUT_MS_CONFIG, CONSUMER_REQUEST_TIMEOUT_MS);
+            if (CONSUMER_METADATA_MAX_AGE_MS != null)
+                consumerProperties.put(ConsumerConfig.METADATA_MAX_AGE_CONFIG, CONSUMER_METADATA_MAX_AGE_MS);
+            if (CONSUMER_RECONNECT_BACKOFF_MS != null)
+                consumerProperties.put(ConsumerConfig.RECONNECT_BACKOFF_MS_CONFIG, CONSUMER_RECONNECT_BACKOFF_MS);
+            if (CONSUMER_RETRY_BACKOFF_MS != null)
+                consumerProperties.put(ConsumerConfig.RETRY_BACKOFF_MS_CONFIG, CONSUMER_RETRY_BACKOFF_MS);
+            if (CONSUMER_ISOLATION_LEVEL != null)
+                consumerProperties.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, CONSUMER_ISOLATION_LEVEL);
+            if (CONSUMER_HEARTBEAT_INTERVAL_MS != null)
+                consumerProperties.put(ConsumerConfig.HEARTBEAT_INTERVAL_MS_CONFIG, CONSUMER_HEARTBEAT_INTERVAL_MS);
+            if (CONSUMER_SESSION_TIMEOUT_MS != null)
+                consumerProperties.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, CONSUMER_SESSION_TIMEOUT_MS);
+            if (CONSUMER_MAX_POLL_INTERVAL_MS != null)
+                consumerProperties.put(ConsumerConfig.MAX_POLL_INTERVAL_MS_CONFIG, CONSUMER_MAX_POLL_INTERVAL_MS);
         }
         return consumerProperties;
     }
 
     /**
      * 获取消费者properties并打印log
+     *
      * @param loggerLevel 日志级别
      * @return
      */
     public static Properties getConsumerProperties(PorpertiesLoggerLevel loggerLevel) {
         Properties consumerProperties = getConsumerProperties();
-        loggingConfigs(consumerProperties,loggerLevel);
+        loggingConfigs(consumerProperties, loggerLevel);
         return consumerProperties;
     }
 
